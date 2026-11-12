@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript to Move Fish</title>
+<style>
+    @font-face {
+        font-family: Candara;
+        src: url("Candara.ttf");
+    } h1 {
+        font-family: Candara, sans-serif;
+        text-align: center;
+    } p {
+        font: 14pt/1.4em Candara;
+        width: 768px;
+        margin: 24px auto;
+    }
+#move {
+    height: 250px;
+    aspect-ratio: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+}
+	body {
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(to bottom, #c2efff, #0077be);
+}
+</style>
+</head>
+
+<body>
+<h1>Fish Follows Mouse</h1>
+<p>To move the fish, hover over it with the mouse.</p>
+
+<img id="move" src="fish.png" alt="Red fish">
+    
+<script>
+const move = document.getElementById("move");
+
+document.body.onpointermove = event => {
+    const { clientX, clientY } = event;
+
+    move.animate({
+        left: `${clientX}px`,
+        top: `${clientY}px`
+    
+    }, {duration: 1000, fill: "forwards"})
+
+}
+</script>    
+<!-- <script>
+const follower = document.getElementById('follower');
+
+    document.addEventListener('mousemove', (event) => {
+        // Get mouse coordinates
+        const mouseX = event.clientX;
+        const mouseY = event.clientY;
+
+        // Update the follower's position
+        // Adjust for centering the element on the cursor if needed
+        follower.style.left = '${mouseX - follower.offsetWidth / 2}px';
+        follower.style.top = '${mouseY - follower.offsetHeight / 2}px';
+    });
+</script> -->
+</body>
+</html>
